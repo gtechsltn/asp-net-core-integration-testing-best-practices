@@ -1,0 +1,45 @@
+services:
+  shipping-service:
+    image: shipping-service
+    build:
+      context: .
+      dockerfile: ./ShippingService/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: always
+    networks:
+      - docker-web
+      
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - TZ
+      - POSTGRES_USER=admin 
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=shipping
+    volumes:
+      - ./docker_data/pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - docker-web
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    restart: always
+    volumes:
+      - ./docker_data/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - docker-web
+
+networks:
+  docker-web:
+    driver: bridge

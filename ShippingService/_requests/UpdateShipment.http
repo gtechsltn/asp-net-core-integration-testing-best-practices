@@ -1,0 +1,15 @@
+### Update Shipment
+POST {{host}}/api/shipments/update-status/03506585
+Content-Type: application/json
+
+{
+    "status": "WaitingCustomer"
+}
+
+### Created,
+### Processing,
+### Dispatched,
+### InTransit,
+### WaitingCustomer,
+### Delivered,
+### Cancelled

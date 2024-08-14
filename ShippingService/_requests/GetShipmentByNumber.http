@@ -1,0 +1,2 @@
+### Get Shipment by Number
+GET {{host}}/api/shipments/27763117

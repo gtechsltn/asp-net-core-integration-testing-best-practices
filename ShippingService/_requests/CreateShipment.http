@@ -1,0 +1,25 @@
+### Create Shipment
+POST {{host}}/api/shipments
+Content-Type: application/json
+
+{
+    "number": "10000033",
+    "orderId": "11100037",
+    "carrier": "Modern Delivery",
+    "receiverEmail": "TODO: SET EMAIL HERE",
+    "address": {
+        "street": "123 Main St",
+        "city": "Springfield",
+        "zip": "12345"
+    },
+    "items": [
+        {
+            "product": "Acer Nitro 5",
+            "quantity": 1
+        },
+        {
+            "product": "Predator Helios Neo 16/18",
+            "quantity": 2
+        }
+    ]
+}
